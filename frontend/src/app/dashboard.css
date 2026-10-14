@@ -1,0 +1,463 @@
+@reference "tailwindcss";
+
+@layer components {
+.dashboard-shell{
+  @apply max-w-none min-h-screen; --ink: #183832; --muted: #6a7976; --paper: #f4f6f7; --line: #e4e9e7; padding: 0 38px 0 296px; background: var(--paper);
+}
+.sidebar{
+  @apply fixed w-[252px] text-[#e3efea] flex flex-col z-20; inset: 0 auto 0 0; background: #112a27; padding: 32px 23px;
+}
+.sidebar .brand{
+  @apply text-[#fff] text-[23px] whitespace-nowrap;
+}.sidebar .brand-mark{
+  @apply text-[#142d25] ml-[8px] text-[17px]; background: #bbdba1; padding: 4px 8px;
+}.sidebar-label{
+  @apply text-[10px] tracking-[2px] text-[#89a79c] font-bold; margin: 48px 12px 14px;
+}
+.sidebar nav{
+  @apply flex flex-col gap-[6px] overflow-visible m-0;
+}.sidebar nav :is(button,a){
+  @apply flex items-center gap-[13px] text-[#a9c0b7] rounded-[9px] font-medium text-[13px] text-left whitespace-nowrap; background: transparent; border: 0; padding: 14px 13px; flex: none;
+}.sidebar nav :is(button,a).active{
+  @apply text-[#ecf6e8]; background: #28433b;
+}.sidebar nav :is(button,a):hover:not(:disabled){ background: #233e36;
+}.sidebar nav :is(button,a) .nav-symbol{
+  @apply text-[inherit] text-[19px] leading-[1] w-[20px] text-center; display: inline-block!important; margin: 0!important;
+}.sidebar-journeys{
+  @apply mt-[32px] pt-[24px]; border-top: 1px solid #2c443d;
+}.sidebar-journeys label{
+  @apply text-[10px] tracking-[1.8px] block text-[#89a79c]; margin: 0 10px 12px;
+}.sidebar-journeys select{
+  @apply text-[#e6f0ea] text-[12px]; background: #203c34; border: 1px solid #3c554d; padding: 12px 10px;
+}.new-journey{
+  @apply w-full mt-[12px] text-[12px] text-[#d8e6df]; background: transparent; border: 1px dashed #547065; padding: 12px;
+}.sidebar-bottom{
+  @apply mt-[auto]; padding: 36px 10px 0;
+}.sidebar-bottom .eyebrow{
+  @apply text-[9px] text-[#8eaca0] tracking-[1.3px];
+}.sidebar-bottom p{
+  @apply text-[12px] text-[#87a59a] leading-[1.7] mb-[0];
+}
+.dashboard-shell .topbar{
+  @apply h-[83px] gap-[16px]; border-color: var(--line);
+}.dashboard-shell .topbar>.brand{
+  @apply hidden;
+}.dashboard-shell .topbar::before{
+  @apply text-[12px] text-[#83908a] font-medium; content: 'Learning workspace';
+}.dashboard-shell .account-bar{
+  @apply ml-[auto] text-[12px];
+}.dashboard-shell .account-bar>span{
+  @apply rounded-[22px] font-semibold; padding: 9px 13px; background: #e8eeea;
+}.dashboard-shell .account-bar .text-button{
+  @apply font-medium text-[var(--muted)] text-[12px];
+}
+.dashboard-shell main{
+  @apply max-w-[1260px]; margin: 34px auto 56px;
+}.workspace-heading{
+  @apply flex justify-between items-start gap-[24px] mb-[30px];
+}.workspace-heading .eyebrow{
+  @apply text-[#83918b] text-[10px] tracking-[1.6px];
+}.workspace-heading h1{
+  @apply text-[31px] tracking-[-1.1px] leading-[1.25]; margin: 12px 0 9px; font-weight: 650;
+}.workspace-heading p{
+  @apply text-[13px] m-0;
+}.workspace-chip{
+  @apply text-[11px] whitespace-nowrap rounded-[24px] text-[#536b5c] mt-[18px]; border: 1px solid #dce5dc; background: #edf2eb; padding: 10px 14px;
+}.dashboard-shell .journey-bar{
+  @apply mb-[22px];
+}.dashboard-shell .journey-bar h2{
+  @apply text-[16px]; margin: 6px 0 0;
+}.dashboard-shell .journey-bar .eyebrow{
+  @apply text-[9px] text-[#85928c];
+}.dashboard-shell .small{
+  @apply text-[11px];
+}.dashboard-shell p{
+  @apply text-[13px];
+}.dashboard-shell h2{
+  @apply text-[19px] tracking-[-.5px];
+}.dashboard-shell h3{
+  @apply text-[17px] tracking-[-.35px];
+}.dashboard-shell button{
+  @apply text-[12px] rounded-[8px]; padding: 12px 17px;
+}.dashboard-shell .text-button{ padding: 8px 10px; background: transparent;
+}.dashboard-shell .panel{
+  @apply rounded-[14px]; padding: 28px; border: 1px solid var(--line); box-shadow: 0 3px 12px #10231c03;
+}.dashboard-shell form>label{
+  @apply text-[12px] text-[#405850];
+}.dashboard-shell input:not([type=radio]):not([type=file]),.dashboard-shell select,.dashboard-shell textarea{
+  @apply text-[13px] rounded-[8px]; border-color: #dae3df; padding: 13px;
+}.dashboard-shell input:focus,.dashboard-shell textarea:focus,.dashboard-shell select:focus{ outline: 2px solid #bed3b6; outline-offset: 2px;
+}.dashboard-shell button:hover:not(:disabled):not(.text-button):not(.path-row):not(.saved-guide){ filter: brightness(1.07);
+}.dashboard-shell button:disabled{
+  @apply cursor-not-allowed;
+}
+.dashboard-shell .next-card{
+  @apply rounded-[14px] mb-[24px] relative overflow-hidden; background: linear-gradient(115deg,#e7eee0,#f0f4e8); padding: 26px 30px; border: 1px solid #dbe6d2;
+}.dashboard-shell .next-card::after{
+  @apply absolute right-[150px] top-[-32px] text-[160px] leading-[1] text-[#bacdaf22] pointer-events-none; content: '↗';
+}.dashboard-shell .next-card .eyebrow{
+  @apply text-[9px] tracking-[1.6px] text-[#6c8362];
+}.dashboard-shell .next-card h3{
+  @apply text-[23px]; margin: 10px 0;
+}.dashboard-shell .next-card p{
+  @apply max-w-[660px] text-[12px];
+}.dashboard-shell .next-card button{
+  @apply relative z-1 whitespace-nowrap;
+}
+.dashboard-content .stats-grid{
+  @apply grid gap-[16px] mb-[24px]; grid-template-columns: repeat(4,minmax(0,1fr));
+}.stat-card{
+  @apply rounded-[12px] flex flex-col gap-[10px]; border: 1px solid var(--line); background: #fff; padding: 22px;
+}.stat-card>span{
+  @apply text-[11px] font-semibold text-[#6f8077];
+}.stat-card>strong{
+  @apply text-[34px] font-semibold tracking-[-1.5px];
+}.stat-card small{
+  @apply text-[10px] text-[#92a095];
+}.dashboard-shell .panel:has(.dashboard-content){
+  @apply p-0; border: 0; background: transparent; box-shadow: none;
+}.dashboard-grid{
+  @apply grid gap-[20px]; grid-template-columns: 1.16fr 1fr;
+}.dashboard-card{
+  @apply rounded-[12px] min-w-0; border: 1px solid var(--line); background: #fff; padding: 24px;
+}.dashboard-card .section-heading{
+  @apply mb-[20px] gap-[12px];
+}.dashboard-card h2{
+  @apply m-0 text-[16px];
+}.dashboard-card .text-button{
+  @apply text-[10px] whitespace-nowrap;
+}.path-row{
+  @apply flex items-center gap-[16px] text-[var(--ink)] w-full text-left; padding: 17px 0!important; background: transparent; border-radius: 0!important; border-top: 1px solid #edf0ec;
+}.path-row>span:nth-child(2){
+  @apply m-0; flex: 1;
+}.path-row strong{
+  @apply text-[12px] font-semibold;
+}.path-row small{
+  @apply block mt-[6px] text-[#89988e] text-[10px] font-normal;
+}.path-row .path-number{
+  @apply m-0 w-[30px] h-[30px] rounded-[50%] flex items-center justify-center text-[#819575] text-[10px]; background: #eef2e9;
+}.path-row>span:last-child{
+  @apply m-0 text-[16px] text-[#97a78e];
+}.activity-row{
+  @apply flex items-center gap-[14px]; padding: 17px 0; border-top: 1px solid #edf0ec;
+}.activity-row strong{
+  @apply text-[12px];
+}.activity-row small{
+  @apply block text-[10px] mt-[7px] text-[#89988e];
+}.activity-dot{
+  @apply w-[8px] h-[8px] rounded-[50%] shrink-0; background: #d7b278;
+}.activity-dot.correct{ background: #82aa87;
+}.quick-actions{
+  @apply grid gap-[14px] mt-[20px]; grid-template-columns: repeat(3,minmax(0,1fr));
+}.quick-actions button{
+  @apply flex justify-between items-center text-left text-[#52675a] font-medium; background: #fff; border: 1px solid var(--line); padding: 19px!important; font-size: 11px!important;
+}.quick-actions button span{
+  @apply text-[#8f9e87]; margin: 0!important;
+}.dashboard-card .empty{
+  @apply mt-[10px]; background: #f8faf6; padding: 22px;
+}.dashboard-card .empty strong{
+  @apply text-[12px];
+}.dashboard-card .empty p{
+  @apply text-[12px];
+}.dashboard-card .empty button{
+  @apply text-[10px] mt-[8px];
+}
+.dashboard-shell .learning-panel{
+  @apply p-0 overflow-hidden;
+}.learning-grid{
+  @apply grid; grid-template-columns: minmax(0,1.12fr) minmax(0,1fr); align-items: start;
+}.practice-column{
+  @apply min-w-0; padding: 28px;
+}.workspace-section-label{
+  @apply flex justify-between items-center pb-[20px] mb-[24px]; border-bottom: 1px solid var(--line);
+}.workspace-section-label .eyebrow{
+  @apply text-[10px] tracking-[1.5px];
+}.workspace-section-label .small{
+  @apply text-[#839589];
+}.practice-column .output{
+  @apply mt-[26px];
+}.practice-column h2{
+  @apply text-[18px];
+}.practice-column form>button{
+  @apply w-full;
+}.practice-column .feedback{ padding: 22px; background: #eef4e8;
+}.practice-column .feedback .eyebrow{
+  @apply text-[10px];
+}.practice-column .feedback .actions button{ flex: 1;
+}.practice-empty{
+  @apply text-center mt-[32px]; padding: 45px 20px 28px; border-top: 1px solid var(--line);
+}.practice-empty>span{
+  @apply text-[36px] text-[#a4b299];
+}.practice-empty h3{
+  @apply text-[15px] font-medium;
+}.practice-empty p{
+  @apply text-[12px] max-w-[310px] m-auto;
+}.conversation-column{
+  @apply sticky top-[22px] min-w-0 flex flex-col; border-left: 1px solid var(--line); background: #fbfcfa; padding: 26px;
+}.conversation-heading{
+  @apply flex items-center gap-[12px];
+}.conversation-heading h2{ font-size: 15px!important; margin: 0 0 5px;
+}.coach-avatar{
+  @apply w-[37px] h-[37px] flex items-center justify-center text-[#31503c] rounded-[11px] text-[11px] font-bold; background: #dce8d4;
+}.conversation-column>p{
+  @apply leading-[1.6] text-[#8a978d]; font-size: 11px!important; margin: 17px 0;
+}.conversation-column .chat-history{
+  @apply overflow-y-auto max-h-[480px] min-h-[240px] pr-[6px]; scrollbar-width: thin;
+}.conversation-empty{
+  @apply text-center; padding: 32px 12px;
+}.conversation-spark{
+  @apply text-[35px] text-[#9dad8d];
+}.conversation-empty h3{
+  @apply text-[16px];
+}.conversation-empty p{
+  @apply max-w-[270px] text-[12px]; margin: 0 auto;
+}.suggested-prompts{
+  @apply flex justify-center flex-wrap gap-[7px] mt-[24px];
+}.suggested-prompts button{
+  @apply text-[#6a7e6e]; font-size: 10px!important; background: #fff; border: 1px solid #dfe8d9; padding: 9px 12px!important; border-radius: 20px!important;
+}.conversation-column .chat-history article{ margin: 14px 0 24px;
+}.conversation-column .chat-user{
+  @apply ml-[20px]; background: #eaf0e3; padding: 14px 16px; border-radius: 12px 12px 3px 12px;
+}.conversation-column .chat-user strong,.conversation-column .chat-coach>strong{
+  @apply text-[10px] text-[#6e8467];
+}.conversation-column .chat-user p{
+  @apply text-[12px]; margin: 7px 0 0;
+}.conversation-column .chat-coach{ padding: 18px 5px 0;
+}.conversation-column .chat-coach p,.conversation-column .chat-coach li{
+  @apply text-[12px];
+}.conversation-column .sources{
+  @apply text-[11px];
+}.conversation-column .sources blockquote{ padding: 10px; border-color: #bac9ac;
+}.chat-composer{
+  @apply pt-[18px] mt-[16px]; border-top: 1px solid var(--line);
+}.chat-composer>label{
+  @apply mt-[0] text-[#6f8175]; font-size: 11px!important;
+}.chat-composer textarea{
+  @apply min-h-[90px]; background: white; font-size: 12px!important;
+}.chat-composer>button{
+  @apply w-full mt-[10px]; background: #274637; font-size: 11px!important;
+}.dashboard-shell .topic-list article{ padding: 20px 0;
+}.dashboard-shell .topic-list strong{
+  @apply text-[13px];
+}.dashboard-shell .topic-list p{
+  @apply text-[11px];
+}.dashboard-shell .material-list strong{
+  @apply text-[12px];
+}.dashboard-shell .upload-box{ padding: 36px; background: #fafbf7; border-color: #b4c3ab;
+}.dashboard-shell .review-card{
+  @apply rounded-[12px]; background: #fafbf8;
+}.dashboard-shell .comparison>div{ background: white; border: 1px solid #e6ece0;
+}.dashboard-shell .attempt summary{
+  @apply text-[13px];
+}.dashboard-shell .attempt summary span{
+  @apply text-[10px] rounded-[20px]; background: #edf2e8; padding: 5px 10px;
+}.dashboard-shell .status,.dashboard-shell .success,.dashboard-shell .error{
+  @apply text-[12px] leading-[1.6];
+}.dashboard-shell footer{
+  @apply text-[10px] max-w-[1260px] m-auto text-[#8d9b92];
+}.dashboard-shell .goal-card strong{
+  @apply text-[13px];
+}.dashboard-shell .goal-card span{
+  @apply text-[12px];
+}.dashboard-shell .legacy-banner{
+  @apply text-[12px];
+}.dashboard-shell pre{
+  @apply text-[12px];
+}.dashboard-shell .saved-guide{
+  @apply text-[12px];
+}
+@media(min-width:1700px){.dashboard-shell{
+  @apply pl-[320px] pr-[65px];
+}}
+@media(max-width:1180px){.dashboard-shell{
+  @apply pl-[248px] pr-[24px];
+}.sidebar{
+  @apply w-[220px]; padding: 26px 17px;
+}.sidebar .brand{
+  @apply text-[20px];
+}.stats-grid{ gap: 10px!important;
+}.stat-card{ padding: 17px;
+}.learning-grid{ grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+}.practice-column,.conversation-column{ padding: 22px;
+}.dashboard-grid{ grid-template-columns: 1fr;
+}.quick-actions{
+  @apply gap-[10px];
+}.workspace-chip{
+  @apply hidden;
+}}
+@media(max-width:900px){.learning-grid{ grid-template-columns: 1fr;
+}.conversation-column{
+  @apply static; border-left: 0; border-top: 1px solid var(--line);
+}.conversation-column .chat-history{
+  @apply max-h-[420px];
+}.dashboard-shell .next-card{
+  @apply items-start flex-col gap-[20px];
+}.dashboard-shell .next-card::after{
+  @apply right-[20px] top-[18px];
+}.dashboard-content .stats-grid{ grid-template-columns: repeat(2,minmax(0,1fr));
+}.quick-actions{ grid-template-columns: 1fr;
+}.workspace-heading h1{
+  @apply text-[27px];
+}}
+@media(max-width:700px){.dashboard-shell{ padding: 0 18px;
+}.sidebar{
+  @apply relative w-auto gap-[16px]; inset: auto; margin: 0 -18px; padding: 20px 18px 12px;
+}.sidebar .brand{
+  @apply text-[22px];
+}.sidebar-label,.sidebar-bottom{
+  @apply hidden;
+}.sidebar nav{
+  @apply flex-row overflow-x-auto gap-[6px] pb-[4px]; margin: 0 -5px;
+}.sidebar nav :is(button,a){
+  @apply text-[11px] shrink-0; padding: 10px 12px;
+}.sidebar nav :is(button,a) .nav-symbol{
+  @apply text-[16px] w-[16px];
+}.sidebar-journeys{
+  @apply flex items-center gap-[10px] m-0; padding: 12px 0 0;
+}.sidebar-journeys label{
+  @apply hidden;
+}.sidebar-journeys select{
+  @apply min-w-0; flex: 1; padding: 10px;
+}.sidebar-journeys .new-journey{
+  @apply w-auto whitespace-nowrap m-0 text-[10px]; border-style: solid;
+}.dashboard-shell .topbar{
+  @apply h-[66px];
+}.dashboard-shell .topbar::before{
+  @apply text-[10px];
+}.dashboard-shell .account-bar{
+  @apply gap-[4px] text-[11px];
+}.dashboard-shell .account-bar>span{ padding: 7px 10px;
+}.dashboard-shell main{
+  @apply mt-[25px];
+}.workspace-heading{
+  @apply mb-[24px];
+}.workspace-heading h1{
+  @apply text-[26px] mt-[10px];
+}.workspace-heading .eyebrow{
+  @apply text-[9px];
+}.dashboard-shell .panel{ padding: 22px;
+}.dashboard-shell .learning-panel{
+  @apply p-0;
+}.dashboard-shell .next-card{ padding: 24px;
+}.dashboard-shell .next-card h3{
+  @apply text-[21px];
+}.stat-card{
+  @apply gap-[9px]; padding: 17px;
+}.stat-card>strong{
+  @apply text-[30px];
+}.stat-card>span{
+  @apply text-[10px];
+}.dashboard-card{ padding: 20px;
+}.practice-column,.conversation-column{ padding: 22px;
+}.dashboard-shell footer{
+  @apply gap-[10px];
+}.workspace-section-label .small{
+  @apply text-[10px];
+}}
+
+/* The learning content stays full width; the coach opens on demand. */
+.learning-grid{
+  @apply block;
+}
+.dashboard-shell .chat-launcher{
+  @apply fixed right-[28px] bottom-[24px] z-35 flex items-center gap-[10px] rounded-[28px] text-[#fff] text-[13px]; padding: 15px 22px; background: #183e31; box-shadow: 0 8px 25px #183e3130;
+}
+.chat-launcher span{
+  @apply m-0 text-[18px];
+}.chat-dialog{
+  @apply fixed m-0 p-0 rounded-[18px] text-[var(--ink)] overflow-hidden; inset: auto 24px 88px auto; border: 1px solid #dce5dc; width: min(460px,calc(100vw - 32px)); max-width: calc(100vw - 32px); height: min(700px,calc(100dvh - 120px)); max-height: calc(100dvh - 120px); box-shadow: 0 24px 80px #0d251d35; background: #fbfcfa;
+}.chat-dialog::backdrop{ background: #10241c35; backdrop-filter: blur(2px);
+}
+.chat-dialog .conversation-column{
+  @apply static h-full max-h-[none] flex flex-col min-h-0; border: 0; padding: 24px;
+}.chat-dialog .conversation-heading{
+  @apply shrink-0;
+}.chat-dialog .conversation-heading>div{
+  @apply min-w-0; flex: 1;
+}.chat-dialog .conversation-heading .small{
+  @apply block; overflow-wrap: anywhere;
+}.dashboard-shell .chat-close{
+  @apply ml-[auto] text-[#52674f] rounded-[50%] w-[32px] h-[32px] shrink-0 flex items-center justify-center p-0 text-[23px] font-normal; background: #eaf0e6;
+}.chat-dialog .chat-history{
+  @apply min-h-0 max-h-[none] overflow-y-auto overscroll-contain; flex: 1;
+}.chat-dialog .chat-composer{
+  @apply shrink-0;
+}.chat-dialog .chat-composer textarea{
+  @apply max-h-[140px];
+}.dashboard-shell main{
+  @apply min-w-0;
+}.dashboard-shell .panel,.dashboard-card,.practice-column,.stat-card{
+  @apply min-w-0;
+}.dashboard-shell h1,.dashboard-shell h2,.dashboard-shell h3,.dashboard-shell p,.dashboard-shell strong,.sources{ overflow-wrap: anywhere;
+}.output img,.chat-coach img{
+  @apply max-w-full h-[auto];
+}.output pre,.chat-coach pre,.attempt pre{
+  @apply max-w-full overflow-auto;
+}.output table,.chat-coach table{
+  @apply block max-w-full overflow-x-auto;
+}.option span{
+  @apply min-w-0; overflow-wrap: anywhere;
+}.dashboard-shell footer{
+  @apply pb-[90px];
+}
+@media(max-width:700px){.dashboard-shell input:not([type=radio]):not([type=file]),.dashboard-shell select,.dashboard-shell textarea,.chat-dialog .chat-composer textarea{ font-size: 16px!important;
+}.workspace-section-label{
+  @apply gap-[12px] flex-wrap;
+}.section-heading{
+  @apply items-start;
+}.section-heading>div{
+  @apply min-w-0;
+}.dashboard-shell .next-card{
+  @apply w-full;
+}.dashboard-shell .journey-bar{
+  @apply flex-wrap;
+}.dashboard-shell .chat-launcher{
+  @apply right-[16px] bottom-[max(16px,env(safe-area-inset-bottom))] text-[12px]; padding: 13px 18px;
+}.chat-dialog{
+  @apply max-w-none rounded-[16px]; inset: auto 8px max(8px,env(safe-area-inset-bottom)) 8px; width: calc(100vw - 16px); height: min(720px,calc(100dvh - 24px)); max-height: calc(100dvh - 24px);
+}.chat-dialog .conversation-column{ padding: 18px;
+}.chat-dialog .conversation-column>p{ margin: 12px 0;
+}.chat-dialog .chat-composer{
+  @apply pt-[12px] mt-[12px];
+}.chat-dialog .chat-composer textarea{
+  @apply min-h-[78px];
+}.goal-grid{ grid-template-columns: 1fr;
+}.comparison{ grid-template-columns: 1fr;
+}}
+@media(max-width:420px){.dashboard-shell{ padding: 0 12px;
+}.sidebar{ margin: 0 -12px; padding: 18px 12px 12px;
+}.workspace-heading h1{
+  @apply text-[23px];
+}.dashboard-content .stats-grid{ gap: 9px!important;
+}.stat-card{ padding: 14px;
+}.stat-card>strong{
+  @apply text-[27px];
+}.stat-card>span{
+  @apply text-[10px];
+}.stat-card small{
+  @apply text-[9px];
+}.dashboard-shell .panel{ padding: 18px;
+}.dashboard-shell .learning-panel{
+  @apply p-0;
+}.practice-column{ padding: 18px;
+}.dashboard-card{ padding: 17px;
+}.dashboard-shell .topbar::before{
+  @apply hidden;
+}.dashboard-shell .account-bar{
+  @apply w-full justify-between;
+}.sidebar-journeys select{ max-width: calc(100% - 110px);
+}.attempt summary{
+  @apply flex-wrap gap-[10px];
+}.actions{
+  @apply flex-col;
+}.actions button{
+  @apply w-full;
+}.path-row{
+  @apply gap-[10px];
+}.dashboard-shell .next-card{ padding: 21px;
+}.dashboard-shell .quick-actions button{ padding: 16px!important;
+}}
+
+}
+
+@layer components { .sidebar nav a { @apply no-underline; } .sidebar nav a[aria-disabled="true"] { @apply opacity-50 cursor-not-allowed; } }

@@ -1,0 +1,234 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@layer components {
+:root{ --ink: #163b32; --muted: #63736c; --paper: #f6f7f2; --line: #dce3d9; --accent: #d9edb8;
+}*{
+  @apply box-border;
+}body{
+  @apply m-0 text-[var(--ink)]; background: var(--paper); font-family: Arial,Helvetica,sans-serif;
+}button,input,select,textarea{ font: inherit;
+}button,a,input,textarea,select,summary{ outline-offset: 5px;
+}button{
+  @apply cursor-pointer rounded-[8px] text-[white] font-semibold; border: 0; background: var(--ink); padding: 14px 22px;
+}button:disabled{
+  @apply opacity-[.5] cursor-wait;
+}button span{
+  @apply ml-[16px];
+}.shell{
+  @apply max-w-[1120px] m-auto; padding: 0 40px;
+}header{
+  @apply h-[96px] flex items-center justify-between; border-bottom: 1px solid var(--line);
+}.brand{
+  @apply text-[24px] font-bold tracking-[-1px] no-underline text-[var(--ink)];
+}.brand>span:first-child{
+  @apply font-normal;
+}.brand-mark{
+  @apply inline-block rounded-[50%] ml-[10px]; background: var(--accent); padding: 5px 10px;
+}.header-note{
+  @apply text-[13px] text-[var(--muted)];
+}main{
+  @apply max-w-[900px]; margin: 60px auto 90px;
+}.eyebrow{
+  @apply text-[11px] tracking-[2px] font-bold uppercase;
+}h1{
+  @apply text-[clamp(38px,6vw,62px)] tracking-[-2px] leading-[1.08]; margin: 22px 0;
+}h1 em{
+  @apply font-normal; font-family: Georgia,serif;
+}p{
+  @apply text-[var(--muted)] leading-[1.65];
+}.intro{
+  @apply mb-[42px];
+}.panel{
+  @apply rounded-[18px]; background: #fff; border: 1px solid var(--line); padding: 32px;
+}.section-heading{
+  @apply flex items-center justify-between gap-[18px];
+}h2{
+  @apply text-[23px] tracking-[-.5px]; margin: 0 0 10px;
+}h3{
+  @apply text-[21px];
+}h4{
+  @apply mb-[8px];
+}.section-heading p{
+  @apply m-0;
+}.step{
+  @apply rounded-[50%] text-[14px]; background: var(--accent); padding: 14px;
+}.goal-grid{
+  @apply grid gap-[12px]; grid-template-columns: repeat(3,1fr); margin: 28px 0;
+}.goal-card{
+  @apply flex flex-col items-start gap-[12px] rounded-[12px] cursor-pointer; border: 1px solid var(--line); padding: 20px;
+}.goal-card.selected{ background: #f0f6e7; border-color: #8caa69;
+}.goal-card strong{
+  @apply text-[15px];
+}.goal-card span{
+  @apply text-[13px] text-[var(--muted)] leading-[1.5];
+}input[type=radio]{
+  @apply w-[16px] h-[16px] m-0; accent-color: var(--ink);
+}form>label{
+  @apply block text-[13px] font-semibold; margin: 20px 0 9px;
+}input:not([type=radio]):not([type=file]),select,textarea{
+  @apply w-full rounded-[8px] text-[var(--ink)]; padding: 14px; border: 1px solid var(--line); background: #fff;
+}textarea{
+  @apply resize-y;
+}form>button{
+  @apply mt-[20px];
+}.journey-bar{
+  @apply flex items-center justify-between gap-[15px] mb-[22px];
+}.journey-bar h2{ margin: 8px 0;
+}.text-button{
+  @apply text-[var(--ink)] text-[13px]; background: transparent; padding: 8px;
+}.journey-bar .text-button{
+  @apply underline;
+}nav{
+  @apply flex gap-[6px] mb-[20px];
+}nav button{
+  @apply text-[var(--muted)] rounded-[0] text-left; flex: 1; background: transparent; border-bottom: 2px solid var(--line); padding: 16px 8px;
+}nav button.active{
+  @apply text-[var(--ink)]; border-color: var(--ink);
+}nav span{
+  @apply text-[11px] text-[var(--muted)]; margin: 0 10px 0 0!important;
+}.upload-box{
+  @apply rounded-[12px] items-center flex-col gap-[15px]; border: 1px dashed #a9bba2; background: #f7f9f3; padding: 30px; display: flex!important;
+}.upload-box span{
+  @apply font-normal text-[13px] text-[var(--muted)];
+}.upload-box .upload-icon{
+  @apply text-[30px];
+}.upload-box input{
+  @apply max-w-full text-[13px];
+}.small{
+  @apply text-[12px];
+}.output{
+  @apply mt-[30px] pt-[24px] leading-[1.7]; border-top: 1px solid var(--line);
+}.output pre,.attempt pre{
+  @apply overflow-auto rounded-[8px] whitespace-pre-wrap; background: var(--paper); padding: 16px; overflow-wrap: anywhere;
+}.output code{
+  @apply text-[13px];
+}.output table{
+  @apply block overflow-auto;
+}.sources{
+  @apply mt-[20px] text-[13px];
+}.sources blockquote{ margin: 16px 0; padding: 12px 18px; border-left: 3px solid var(--accent); background: var(--paper);
+}summary{
+  @apply cursor-pointer font-semibold;
+}.sources p{
+  @apply whitespace-pre-wrap;
+}.option{
+  @apply flex items-start gap-[12px] rounded-[8px] cursor-pointer; padding: 15px; margin: 10px 0; border: 1px solid var(--line);
+}.option input{
+  @apply shrink-0 mt-[5px];
+}fieldset{
+  @apply p-0; border: 0;
+}.feedback{
+  @apply mt-[24px] rounded-[12px]; padding: 24px; background: #f0f6e7;
+}.empty{
+  @apply rounded-[12px] text-[var(--muted)] mt-[25px]; background: var(--paper); padding: 32px;
+}.attempt{ padding: 20px 0; border-top: 1px solid var(--line);
+}.attempt summary{
+  @apply flex justify-between gap-[15px];
+}.attempt summary span{
+  @apply text-[12px] font-normal;
+}.status,.success,.error{
+  @apply rounded-[10px]; padding: 18px;
+}.status{ background: #eaf0e3;
+}.success{ background: #e5f2e4;
+}.error{
+  @apply text-[#913f30]; background: #fce9e5;
+}footer{
+  @apply flex justify-between text-[var(--muted)] text-[12px]; border-top: 1px solid var(--line); padding: 24px 0;
+}@media(max-width:640px){.shell{ padding: 0 20px;
+}header{
+  @apply h-[76px];
+}.header-note{
+  @apply hidden;
+}main{
+  @apply mt-[36px];
+}.panel{ padding: 22px;
+}.goal-grid{ grid-template-columns: 1fr;
+}.goal-card{
+  @apply gap-[8px];
+}.journey-bar{
+  @apply items-start;
+}nav button{
+  @apply text-[12px];
+}nav span{
+  @apply hidden;
+}.section-heading{
+  @apply flex-wrap;
+}footer{
+  @apply gap-[15px];
+}}
+
+.account-bar{
+  @apply flex items-center gap-[12px];
+}.journey-picker{
+  @apply flex items-center gap-[15px] mb-[26px];
+}.journey-picker label{
+  @apply text-[13px] whitespace-nowrap;
+}.journey-picker select{ flex: 1;
+}.next-card{
+  @apply flex items-center justify-between gap-[24px] rounded-[12px] mb-[24px]; padding: 24px; background: #e9f0df;
+}.next-card h3{ margin: 8px 0;
+}.next-card p{
+  @apply m-0;
+}.next-card button{
+  @apply shrink-0;
+}.material-list{
+  @apply mt-[25px];
+}.material-list>div{
+  @apply flex justify-between gap-[16px]; padding: 16px 0; border-bottom: 1px solid var(--line);
+}.material-list span{
+  @apply text-[12px] text-[var(--muted)];
+}.topic-list article{
+  @apply flex items-center gap-[12px]; border-top: 1px solid var(--line); padding: 18px 0;
+}.topic-list article>div{ flex: 1;
+}.topic-list p{
+  @apply text-[12px]; margin: 8px 0;
+}.review-list{
+  @apply mt-[30px] pt-[25px]; border-top: 1px solid var(--line);
+}.review-card{
+  @apply rounded-[12px]; padding: 22px; border: 1px solid var(--line); margin: 20px 0;
+}.review-card label{
+  @apply block text-[13px]; margin: 15px 0 8px;
+}.review-card button{
+  @apply mt-[16px];
+}.comparison{
+  @apply grid gap-[16px]; grid-template-columns: 1fr 1fr;
+}.comparison>div{
+  @apply rounded-[8px]; padding: 16px; background: var(--paper);
+}.comparison h4{
+  @apply m-0;
+}.saved-guide{
+  @apply flex justify-between w-full text-left text-[var(--ink)] gap-[12px]; background: var(--paper); margin: 10px 0;
+}.chat-history article{ margin: 22px 0;
+}.chat-user{
+  @apply rounded-[12px]; padding: 16px 20px; background: var(--paper);
+}.chat-user p{
+  @apply whitespace-pre-wrap;
+}.chat-coach{
+  @apply leading-[1.7]; padding: 20px;
+}.chat-coach pre{
+  @apply whitespace-pre-wrap; overflow-wrap: anywhere;
+}.actions{
+  @apply flex gap-[10px] flex-wrap mt-[20px];
+}.legacy-banner{
+  @apply rounded-[12px] mb-[25px]; padding: 20px; background: #e9f0df;
+}nav{
+  @apply overflow-auto;
+}nav button{
+  @apply whitespace-nowrap;
+}@media(max-width:640px){.next-card{
+  @apply items-start flex-col;
+}.comparison{ grid-template-columns: 1fr;
+}.journey-picker{
+  @apply flex-wrap;
+}.topic-list article{
+  @apply flex-wrap;
+}.topic-list article>div{ flex-basis: 100%;
+}.saved-guide{
+  @apply flex-col;
+}.material-list>div{
+  @apply flex-col;
+}}
+
+}

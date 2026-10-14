@@ -1,0 +1,62 @@
+services:
+  rabbitmq:
+    image: rabbitmq:4-management
+    environment:
+      RABBITMQ_DEFAULT_USER: learnforward
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-learnforward-local}
+    ports:
+      - "127.0.0.1:5672:5672"
+      - "127.0.0.1:15672:15672"
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+      - ./rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      start_period: 60s
+      interval: 10s
+      timeout: 15s
+      retries: 20
+    restart: unless-stopped
+  api:
+    build:
+      context: ./backend
+      args:
+        INSTALL_LOCAL_WHISPER: ${INSTALL_LOCAL_WHISPER:-false}
+    env_file: ./backend/.env
+    environment: &backend-environment
+      RABBITMQ_URL: amqp://learnforward:${RABBITMQ_PASSWORD:-learnforward-local}@rabbitmq:5672/%2F
+      LEARNFORWARD_DATABASE_URL: ${COMPOSE_DATABASE_URL:-sqlite:////data/learnforward.db}
+      LEARNFORWARD_STORAGE: /data/uploads
+      LOG_DIR: /data/logs
+    volumes: &backend-volumes
+      - ./backend:/data
+    ports:
+      - "127.0.0.1:8001:8001"
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    restart: unless-stopped
+    stop_grace_period: 60s
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8001/health', timeout=3)"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  worker:
+    build:
+      context: ./backend
+      args:
+        INSTALL_LOCAL_WHISPER: ${INSTALL_LOCAL_WHISPER:-false}
+    command: ["python", "-m", "scripts.ingestion_worker"]
+    env_file: ./backend/.env
+    environment: *backend-environment
+    volumes: *backend-volumes
+    depends_on:
+      api:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    restart: unless-stopped
+    stop_grace_period: 60s
+volumes:
+  rabbitmq-data:

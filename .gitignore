@@ -1,0 +1,18 @@
+﻿# Local configuration and secrets
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Operating system and editor files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Generated diagnostic output
+*.log
+*-results.txt

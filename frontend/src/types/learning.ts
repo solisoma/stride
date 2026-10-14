@@ -1,0 +1,15 @@
+export type Goal = 'exam' | 'technical_interview' | 'new_field';
+export type Journey = { id: number; goal: Goal; subject: string };
+export type User = { id: number; name: string; email: string; role: 'admin' | 'learner' };
+export type NextStep = { topic: string | null; action: string; reason: string };
+export type Topic = { id: number; title: string; active: boolean; status: string; attempts: number; due_at: number | null; due: boolean; prerequisites: string[]; citations: string[] };
+export type Plan = { revision: number; plan_revision: number; status: string; topics: Topic[]; next: NextStep; note: string };
+export type Material = { id: number; name: string; passages: number; status?: 'queued' | 'processing' | 'ready' | 'failed'; progress?: string; error?: string; reference?: string; plan_error?: string | null; plan_pending?: boolean };
+export type ChatMessage = { context?: { id: number; kind: string; topic: string; revision: number; stale: boolean } | null; id: number; message: string; content: string; citations: string[]; sources: Source[]; revision: number; created_at: number };
+export type SourceReview = { id: number; source_claim: string; alternative: string; reason: string; citations: string[]; sources: Source[]; decision: string; note: string; verification: string };
+export type SavedActivity = { id: number; kind: string; topic: string; result: Partial<Guide & Question>; sources: Source[]; revision: number; stale: boolean };
+export type Source = { id: string; document: string; page: number | string; timestamp?: string; text: string };
+export type Guide = { id: number; title?: string; content: string; citations: string[]; sources: Source[] };
+export type Question = { id: number; topic?: string; prompt: string; options: string[]; revision?: number; supported?: boolean };
+export type Feedback = { id: number; verdict: string; explanation: string; next_step: string; citations: string[]; sources?: Source[]; next?: NextStep };
+export type Progress = { attempts: { id: number; topic: string; answer: string; feedback: Feedback; sources: Source[]; created_at: number | null; supported: boolean | null; revision: number }[]; topics: Topic[]; next: NextStep; note: string };
